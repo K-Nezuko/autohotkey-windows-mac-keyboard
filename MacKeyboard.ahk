@@ -55,15 +55,12 @@ F13::SendInput {PrintScreen}
 F14::SendInput {ScrollLock}
 F15::SendInput {Pause}
 
-;F16-19 custom app launchers, see http://www.autohotkey.com/docs/Tutorial.htm for usage info
-F16::Run http://twitter.com
-F17::Run http://tumblr.com
-F18::Run http://www.reddit.com
-F19::Run https://facebook.com
-
 ; --------------------------------------------------------------
 ; OS X system shortcuts
 ; --------------------------------------------------------------
+
+; 屏蔽win键呼出开始菜单
+~LWin:: vk07 
 
 ; Make Ctrl + S work with cmd (windows) key
 #s::Send, ^s
@@ -90,7 +87,7 @@ F19::Run https://facebook.com
 #z::Send ^z
 
 ; Redo
-#y::Send ^y
+#+z::Send ^y
 
 ; New tab
 #t::Send ^t
@@ -102,7 +99,11 @@ F19::Run https://facebook.com
 #q::Send !{F4}
 
 ; Remap Windows + Tab to Alt + Tab.
-Lwin & Tab::AltTab
+;Lwin & Tab::AltTab
+
+; 切换桌面
+!F2:: Send #^{right}
+!F1:: Send #^{left}
 
 ; minimize windows
 #m::WinMinimize,a
@@ -113,53 +114,65 @@ Lwin & Tab::AltTab
 ; --------------------------------------------------------------
 
 ; Map Alt + L to @
-!l::SendInput {@}
+;!l::SendInput {@}
 
-; Map Alt + N to \
-+!7::SendInput {\}
+; Map Shift + Alt + 7 to \
+;+!7::SendInput {\}
 
-; Map Alt + N to ©
-!g::SendInput {©}
+; Map Alt + g to ©
+;!g::SendInput {©}
 
 ; Map Alt + o to ø
-!o::SendInput {ø}
+;!o::SendInput {ø}
 
 ; Map Alt + 5 to [
-!5::SendInput {[}
+;!5::SendInput {[}
 
 ; Map Alt + 6 to ]
-!6::SendInput {]}
+;!6::SendInput {]}
 
 ; Map Alt + E to €
-!e::SendInput {€}
+;!e::SendInput {€}
 
 ; Map Alt + - to –
-!-::SendInput {–}
+;!-::SendInput {–}
 
 ; Map Alt + 8 to {
-!8::SendInput {{}
+;!8::SendInput {{}
 
 ; Map Alt + 9 to }
-!9::SendInput {}}
+;!9::SendInput {}}
 
 ; Map Alt + - to ±
-!+::SendInput {±}
+;!+::SendInput {±}
 
 ; Map Alt + R to ®
-!r::SendInput {®}
+;!r::SendInput {®}
 
 ; Map Alt + N to |
-!7::SendInput {|}
+;!7::SendInput {|}
 
 ; Map Alt + W to ∑
-!w::SendInput {∑}
+;!w::SendInput {∑}
 
 ; Map Alt + N to ~
-!n::SendInput {~}
+;!n::SendInput {~}
 
 ; Map Alt + 3 to #
-!3::SendInput {#}
+;!3::SendInput {#}
 
+
+; --------------------------------------------------------------
+; 光标快速移动
+; --------------------------------------------------------------
+
+#Left:: Send {Home}
+#+Left:: Send +{Home}
+#Right:: Send {End}
+#+Right:: Send +{End}
+
+#Up:: Send ^{Home}
+#Down:: Send ^{End}
 
 
 ; --------------------------------------------------------------
@@ -186,5 +199,7 @@ Lwin & Tab::AltTab
 ; Show source code with cmd + alt + u
 #!u::Send ^u
 
-#IfWinActive
+; 刷新页面
+#r::Send, {F5}
 
+#IfWinActive
