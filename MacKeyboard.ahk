@@ -61,6 +61,7 @@ F15::SendInput {Pause}
 
 ; 屏蔽win键呼出开始菜单
 ~LWin:: vk07 
+~LWin::Send {Blind}{vkE8}
 
 ; Make Ctrl + S work with cmd (windows) key
 #s::Send, ^s
